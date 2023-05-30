@@ -1,0 +1,54 @@
+.sidebar {
+    width: 300px;
+    height: 600px;
+    background-color: rgb(37, 45, 70);
+    color: #c0bbbb;
+
+    .content {
+        .title {
+            font-weight: 500;
+            margin-left: 10px;
+            font-size: small;
+        }
+
+        .user {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 10px;
+            padding: 10px;
+            border-top: 1px solid #a09f9f;
+
+            &:hover {
+                background-color: rgb(123, 126, 126);
+            }
+
+            img {
+                width: 35px;
+                height: 35px;
+                border-radius: 100%;
+
+            }
+
+            .details {
+                display: flex;
+                flex-direction: column;
+                padding-left: 20px;
+
+                .UserName {
+                    margin: 0;
+                    font-weight: bold;
+                }
+
+                .new-text {
+                    margin: 0;
+                    font-size: small;
+                }
+
+
+
+            }
+        }
+    }
+
+}

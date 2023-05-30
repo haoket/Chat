@@ -1,0 +1,61 @@
+.element {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+
+    .text {
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        gap: 10px;
+        position: relative;
+
+
+
+        .send {
+            span {
+                display: flex;
+                border: none;
+                background-color: white;
+                border-radius: 5px;
+                padding: 5px 10px;
+
+
+                &::after {
+                    content: '';
+                    width: 0px;
+                    height: 0px;
+                    border-top: 8px solid transparent;
+                    border-bottom: 8px solid transparent;
+                    border-left: 8px solid white;
+                    position: absolute;
+                    right: 1;
+                    margin-top: -1px;
+                    margin-left: 139px;
+
+
+
+
+                }
+
+
+            }
+
+            img {
+                margin-top: 10px;
+                max-width: 150px;
+
+            }
+        }
+
+
+
+        .imgUser {
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+        }
+    }
+}

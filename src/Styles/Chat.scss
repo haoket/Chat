@@ -1,0 +1,30 @@
+.chatContainer {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+
+    .top-header {
+        height: 60px;
+        background-color: rgb(46, 46, 77);
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        color: white;
+        padding: 0 10px;
+
+        .item {
+            display: flex;
+            gap: 10px;
+            color: white;
+            cursor: pointer;
+
+
+            i:hover {
+                color: rgb(92, 92, 88);
+            }
+        }
+    }
+}

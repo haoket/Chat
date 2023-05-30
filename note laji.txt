@@ -1,0 +1,7 @@
+Dùng firebase:
+	-setup authenticate
+	-Storage
+	-firestore database
+
+
+tạo authenticate để xác định trạng thái người dùng đăng nhập -> API ngữ cảnh (context)

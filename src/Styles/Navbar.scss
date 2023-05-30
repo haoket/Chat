@@ -1,0 +1,37 @@
+.navbar {
+    width: 300px;
+    height: 60px;
+    background-color: rgb(25, 21, 46);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        color: white;
+    }
+
+    .user {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 7px;
+        color: white;
+
+        .avt {
+            img {
+                width: 35px;
+                height: 35px;
+                border-radius: 100%;
+            }
+        }
+
+        button {
+            padding: 2px;
+            margin-right: 5px;
+            background-color: rgb(65, 80, 112);
+            color: #ffff;
+            font-size: 9px;
+            cursor: pointer;
+        }
+    }
+}
