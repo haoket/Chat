@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import '../Styles/Chat.scss'
 import Message from './Message'
 import Input from './Input'
+import { ChatContext } from '../context/ChatContext'
 const Chat = () => {
+
+    const { data } = useContext(ChatContext);
+
     return (
         <div className='chatContainer' >
             <div className='top-header'>
-                <p className='nameUser'>Trang</p>
+                <p className='nameUser'>{data.user?.displayName}</p>
 
 
                 <div className='item'>

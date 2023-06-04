@@ -1,0 +1,37 @@
+.search {
+    .searchForm {
+        input {
+            width: 100%;
+            background: rgb(37, 45, 70);
+            outline: none;
+            color: #c0bbbb;
+            border: none;
+            padding: 10px;
+
+            &::placeholder {
+                color: #c0bbbb;
+            }
+        }
+    }
+
+    .userChat {
+        display: flex;
+        padding: 10px;
+        width: 50px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        img {
+            width: 35px;
+            height: 35px;
+            border-radius: 100%;
+        }
+
+        &:hover {
+            background-color: #747272;
+            border-radius: 5px;
+        }
+    }
+
+}
