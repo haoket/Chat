@@ -14,7 +14,7 @@ const Login = () => {
         // console.log(e.target[0].value)
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            navigate("/")
+            navigate("/Chat")
 
 
         } catch (e) {
@@ -36,7 +36,7 @@ const Login = () => {
                     <button>Sign In</button>
 
                 </form>
-                <p>You don't have an account? <Link to='/register'>Register</Link></p>
+                <p>You don't have an account? <Link to='/Chat/register'>Register</Link></p>
                 {err && <span>Something went wrong</span>}
 
             </div>
