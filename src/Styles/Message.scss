@@ -2,4 +2,14 @@
     background-color: rgb(54, 66, 82);
     height: calc(100% - 110px);
     overflow: scroll;
+
+}
+
+
+@media (max-width:479px) {
+    .messContainer {
+        width: 100%;
+
+
+    }
 }

@@ -36,7 +36,7 @@ const Login = () => {
                     <button>Sign In</button>
 
                 </form>
-                <p>You don't have an account? <Link to='/Chat/register'>Register</Link></p>
+                <p>Bạn chưa có tài khoản <Link to='/Chat/register'>Đăng ký tại đây</Link></p>
                 {err && <span>Something went wrong</span>}
 
             </div>

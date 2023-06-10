@@ -1,14 +1,15 @@
 .inputContainer {
+    width: calc(100% - 50px);
     height: 50px;
     background-color: rgb(247, 250, 250);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px;
+
     position: relative;
 
     input {
-        width: 320px;
+        max-width: 290px;
         border: none;
         outline: none;
 
@@ -33,4 +34,14 @@
         position: absolute;
         margin-top: -100px;
     }
+}
+
+
+@media (max-width:479px) {
+    .inputContainer {
+        width: 100%;
+
+
+    }
+
 }
