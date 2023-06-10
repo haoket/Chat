@@ -20,23 +20,26 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/Chat">
-          <Route index element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
+    <div className="wrap">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/Chat">
+            <Route index element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
 
-          } />
-          <Route path="/Chat/login" element={<Login />} />
-          <Route path="/Chat/register" element={<Register />} />
+            } />
+            <Route path="/Chat/login" element={<Login />} />
+            <Route path="/Chat/register" element={<Register />} />
 
 
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   )
+
 }
 
 export default App

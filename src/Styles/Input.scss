@@ -8,10 +8,12 @@
 
     position: relative;
 
+
     input {
         max-width: 290px;
         border: none;
         outline: none;
+
 
     }
 
@@ -26,6 +28,7 @@
         background-color: rgb(66, 69, 212);
         color: white;
         cursor: pointer;
+        margin-right: 10px;
     }
 
     img.preView {
