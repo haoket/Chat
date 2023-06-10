@@ -46,7 +46,7 @@ const Sidebar = () => {
     }
     return (
         <>
-            <div className={`sidebar ${!openBar && 'active'}`}>
+            <div className={`sidebar ${openBar && 'active'}`}>
 
                 <div onClick={open}>
                     <Navbar />
@@ -64,7 +64,7 @@ const Sidebar = () => {
                             <img src={chat[1].userInfo.photoURL} alt="" />
                             <div className='details'>
                                 <p className='UserName'>{chat[1].userInfo.displayName}</p>
-                                <p className='new-text'>{chat[1].lastMessage?.text}</p>
+                                <p className='new-text'>{chat[1].lastMessage?.text || "đã gửi một ảnh"}</p>
                             </div>
                         </div>
                     ))

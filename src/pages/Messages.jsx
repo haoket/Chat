@@ -29,7 +29,7 @@ const Messages = ({ message }) => {
             })()}`}>
                 <div className="text">
                     <div className='send' ref={ref}>
-                        <span>{message.text}</span>
+                        {message.text && <span>{message.text}</span>}
                         {message.img && <img src={message.img} alt="" />}
                     </div>
 
@@ -39,7 +39,6 @@ const Messages = ({ message }) => {
                         onLoad={() => console.log("IDdddddd", message.senderID)} />
                 </div>
             </div>
-
         </div>
     )
 }

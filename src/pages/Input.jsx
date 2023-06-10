@@ -11,9 +11,10 @@ const Input = () => {
     const [previewImage, setPreviewImage] = useState(null);
     const [text, setText] = useState("");
     const [img, setImg] = useState(null);
-    const [uploadInProgress, setUploadInProgress] = useState(false); // Biến cờ
+    const [uploadInProgress, setUploadInProgress] = useState(false);
     const { currentUser } = useContext(AuthContext);
     const { data } = useContext(ChatContext);
+
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         const reader = new FileReader();
@@ -28,19 +29,18 @@ const Input = () => {
     };
 
     const handleSend = async () => {
-        if (uploadInProgress) return; // Kiểm tra nếu quá trình tải lên đang tiếp diễn, không cho phép gửi lại
+        if (uploadInProgress) return;
 
         if (img) {
             const storageRef = ref(storage, uuid());
             const uploadTask = uploadBytesResumable(storageRef, img);
 
             try {
-                setUploadInProgress(true); // Đặt biến cờ thành true để bắt đầu quá trình tải lên
+                setUploadInProgress(true);
 
                 await new Promise((resolve, reject) => {
                     uploadTask.on(
                         (error) => {
-                            // Xử lý lỗi nếu cần
                             reject(error);
                         },
                         () => {
@@ -53,15 +53,21 @@ const Input = () => {
 
                                     getDownloadURL(uploadTask.snapshot.ref)
                                         .then(async (downloadURL) => {
+                                            const message = {
+                                                id: uuid(),
+                                                senderId: currentUser.uid,
+                                                date: Timestamp.now(),
+                                                img: downloadURL,
+                                            };
+
+                                            if (text.trim() !== "") {
+                                                message.text = text;
+                                            }
+
                                             await updateDoc(doc(db, "chats", data.chatId), {
-                                                messages: arrayUnion({
-                                                    id: uuid(),
-                                                    text,
-                                                    senderId: currentUser.uid,
-                                                    date: Timestamp.now(),
-                                                    img: downloadURL,
-                                                }),
+                                                messages: arrayUnion(message),
                                             });
+
                                             resolve();
                                         })
                                         .catch((error) => {
@@ -72,36 +78,37 @@ const Input = () => {
                                     isCompleted = true;
                                     reject(new Error("Error uploading image"));
                                 }
-                            }, 200); // Kiểm tra trạng thái mỗi giây
+                            }, 200);
 
-                            // Đánh dấu tải lên hoàn thành nếu không có lỗi sau 10 giây
                             setTimeout(() => {
                                 if (!isCompleted) {
                                     clearInterval(checkUploadStatus);
                                     resolve();
                                 }
-                            }, 1500); // Thời gian chờ tối đa 10 giây
+                            }, 1500);
                         }
                     );
-
                 });
             } catch (error) {
-                // Xử lý lỗi tải lên
+                // Handle upload error
             } finally {
-                setUploadInProgress(false); // Đặt biến cờ thành false sau khi quá trình tải lên kết thúc
+                setUploadInProgress(false);
             }
         } else {
-            await updateDoc(doc(db, "chats", data.chatId), {
-                messages: arrayUnion({
+            if (text.trim() !== "") {
+                const message = {
                     id: uuid(),
                     text,
                     senderId: currentUser.uid,
                     date: Timestamp.now(),
-                }),
-            });
+                };
+
+                await updateDoc(doc(db, "chats", data.chatId), {
+                    messages: arrayUnion(message),
+                });
+            }
         }
 
-        // Các bước cập nhật khác và đặt lại giá trị
         await updateDoc(doc(db, 'userChats', currentUser.uid), {
             [data.chatId + '.lastMessage']: {
                 text,
@@ -117,7 +124,7 @@ const Input = () => {
 
         setText("");
         setImg(null);
-        setPreviewImage(null)
+        setPreviewImage(null);
     };
 
     return (

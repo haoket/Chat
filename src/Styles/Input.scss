@@ -1,11 +1,11 @@
 .inputContainer {
-    width: calc(100% - 50px);
+    width: 100%;
     height: 50px;
     background-color: rgb(247, 250, 250);
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    gap: 10px;
     position: relative;
 
 
